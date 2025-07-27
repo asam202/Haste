@@ -1,7 +1,7 @@
-import { integer, pgTable, varchar,date } from "drizzle-orm/pg-core";
+import { integer, pgTable, text,date } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("paste", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  content: varchar().notNull(),
+  content: text("content").notNull(), // The paste content
   exp_date: date().notNull(),
 });
