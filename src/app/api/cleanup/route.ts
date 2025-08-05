@@ -1,13 +1,10 @@
 import { NextResponse } from 'next/server';
-import { lt } from 'drizzle-orm';
 import { db, pasteTable } from '@/lib/db';
 
 export async function POST() {
   try {
-    
     const result = await db()
-      .delete(pasteTable)
-    
+      .delete(pasteTable);
 
     return NextResponse.json({ 
       message: 'Cleanup completed',
