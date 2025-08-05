@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     const exp = new Date();
     exp.setHours(exp.getHours() + 24); // 24 hours from now
 
-    await db.insert(pasteTable).values({
+    await db().insert(pasteTable).values({
       id,
       content,
       exp,

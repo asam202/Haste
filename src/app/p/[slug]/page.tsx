@@ -13,7 +13,7 @@ export default async function PastePage({ params }: PageProps) {
   const { slug } = await params;
 
   try {
-    const [paste] = await db
+    const [paste] = await db()
       .select()
       .from(pasteTable)
       .where(eq(pasteTable.id, slug))
@@ -27,7 +27,7 @@ export default async function PastePage({ params }: PageProps) {
     const now = new Date();
     if (paste.exp < now) {
       // Optionally, you could delete expired pastes here
-      // await db.delete(pasteTable).where(eq(pasteTable.id, slug));
+      // await db().delete(pasteTable).where(eq(pasteTable.id, slug));
       notFound();
     }
 
